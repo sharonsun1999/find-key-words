@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Emergency Call Optimization</title>
+</head>
+<body>
+<style type="text/css">
+	.title{
+		color: #2054FE;
+		font-size: 40px;
+		margin: auto;
+		margin-left: 33%;
+	}
+	body{
+		background-color: #F1F1F2;
+	}
+	form label{
+		font-size:27px;
+	}
+	.caption{
+		margin-top:100px;
+		font-size: 30px;
+		color:#2054FE;
+		margin-left: 20px;
+	}
+	.time{
+		margin-left: 5px;
+		height: 27px;
+	}
+	.datetime{
+		display: inline;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+	#button{
+		height: 30px;
+		font-size: 20px;
+	}
+	.dispatch{
+		margin-top:20px;
+		font-size: 25px;
+		margin-left:20px;
+	}
+	.address{
+		width: 200px;
+		height: 27px;
+		margin-left:5px; 
+	}
+	.trend{
+		padding-top:20px;
+		font-size: 25px;
+		margin-left:20px;
+	}
+	.distribution{
+		margin-left:20px;
+	}
+	.answer{
+		margin-left:20px;
+		margin-bottom: 50px;
+		font-size: 25px;
+	}
+
+</style>
+<h2 class="title">Emergency Call Optimization</h2>
+<p class="caption">1. Data Visuals</p>
+<div class="distribution">
+<p class="trend">i) Distribution of the number of incidents for each day</p>
+<img class="graph" src="/static/images/calldate.png">
+<p class="trend">ii) Distribution of required dispatch types of incidents</p>
+<img class="graph" src="/static/images/unittype.png">
+<p class="trend">iii) Distribution of groups that emergency calls fall into</p>
+<img class="graph" src="/static/images/callgroup.png">
+</div>
+<div><p class="caption">2. Finding the most likely dispatch to be required from given address and time</p></div>
+<form action="change" method="get">
+	<div class="datetime">
+	<label>Address</label>
+	<input class='address' type="text" name="address">
+	</div>
+	<div class='datetime'></div>
+	<label>Date</label>
+	<input class='time' type="date" name="date">
+	</div>
+	<div class="datetime">
+	<label>Time</label>
+	<input class="time" type="time" name="time">
+	</div>
+	<div class="datetime">
+	<input type="submit" name="submit" value="submit" id="button">
+    </div>
+</form>
+<div class="dispatch">
+	Probability of each type of dispatch to be required: {{prob}}
+</div>
+<p class="caption">3. Area that take the longest time to dispatch to</p>
+<p class="answer">The area that takes the longest time to dispatch to is {{region}}. It takes approximately {{interval}} seconds to dispatch to on average.</p>
+</body>
+</html>
